@@ -38,6 +38,11 @@ class TTexts {
   static const String verificationCode = 'VerificationCode';
   static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend Email In';
+  static const String confirmEmail = 'Verify your email address';
+  static const String yourAccountCreatedTitle = 'Verify your email address';
+  static const String yourAccountCreatedSubTitle = 'Verify your email address';
+  static const String confirmEmailSubTitle =
+      'Congratulations! your account awaits: We sent you a secure';
 
   // Login
   static const String loginTitle = "Welcome back";

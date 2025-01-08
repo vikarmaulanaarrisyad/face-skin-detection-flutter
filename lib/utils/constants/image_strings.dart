@@ -12,4 +12,10 @@ class TImages {
   // OnBoardingImage
   static const String onBoardingImage1 =
       "assets/images/on_boarding_images/onboarding.png";
+
+  // Animations
+  static const String verifyIllustration =
+      "assets/images/on_boarding_images/onboarding.png";
+  static const String staticSuccessIlustration =
+      "assets/images/on_boarding_images/onboarding.png";
 }
