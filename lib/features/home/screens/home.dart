@@ -1,5 +1,9 @@
 import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_appbar.dart';
+import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_categories.dart';
+import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +20,26 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
+                  // Search Bar
+                  TSearchContainer(text: 'Search...',),
+                  SizedBox(height: TSizes.spaceBtwSections),
+                  // Category Warna Kulit
+                  Padding(
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TSectionHeading(
+                          title: 'Populer Categories',
+                          showActionButton: false,
+                          textColor: Colors.white,
+                        ),
+                        SizedBox(height: TSizes.spaceBtwItems),
+                        THomeCategories(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

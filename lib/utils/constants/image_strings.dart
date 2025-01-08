@@ -18,4 +18,7 @@ class TImages {
       "assets/images/on_boarding_images/onboarding.png";
   static const String staticSuccessIlustration =
       "assets/images/on_boarding_images/onboarding.png";
+
+  static const String sporticon =
+      'assets/images/on_boarding_images/onboarding.png';
 }
