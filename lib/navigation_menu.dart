@@ -1,4 +1,4 @@
-import 'package:face_skin_detection_flutter/features/home/controllers/home_controller.dart';
+import 'package:face_skin_detection_flutter/features/home/controllers/navigation_controller.dart';
 import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';

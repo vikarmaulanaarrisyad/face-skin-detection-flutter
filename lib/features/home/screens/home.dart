@@ -3,6 +3,8 @@ import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/contain
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_appbar.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_categories.dart';
+import 'package:face_skin_detection_flutter/features/home/screens/widgets/product_slider.dart';
+import 'package:face_skin_detection_flutter/utils/constants/image_strings.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 
 import 'package:flutter/material.dart';
@@ -21,8 +23,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   THomeAppBar(),
                   SizedBox(height: TSizes.spaceBtwSections),
-                  // Search Bar
-                  TSearchContainer(text: 'Search...',),
+                  TSearchContainer(text: 'Search...'),
                   SizedBox(height: TSizes.spaceBtwSections),
                   // Category Warna Kulit
                   Padding(
@@ -40,6 +41,20 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                ],
+              ),
+            ),
+
+            // Body
+            Padding(
+              padding: EdgeInsets.all(TSizes.defaultSpace),
+              child: TProductSlider(
+                banners: [
+                  TImages.productBanner1,
+                  TImages.productBanner2,
+                  TImages.productBanner3,
+                  TImages.productBanner4,
+                  TImages.productBanner5,
                 ],
               ),
             ),

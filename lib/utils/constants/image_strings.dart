@@ -21,4 +21,11 @@ class TImages {
 
   static const String sporticon =
       'assets/images/on_boarding_images/onboarding.png';
+
+  // Banner
+  static const String productBanner1 = 'assets/images/banners/gambar_1.png';
+  static const String productBanner2 = 'assets/images/banners/gambar_2.png';
+  static const String productBanner3 = 'assets/images/banners/gambar_3.png';
+  static const String productBanner4 = 'assets/images/banners/gambar_4.png';
+  static const String productBanner5 = 'assets/images/banners/gambar_5.png';
 }
