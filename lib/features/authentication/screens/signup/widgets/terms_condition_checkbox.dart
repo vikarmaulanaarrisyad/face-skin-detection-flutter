@@ -35,7 +35,7 @@ class TTermsConditionCheckbox extends StatelessWidget {
                     ),
               ),
               TextSpan(
-                text: '${TTexts.end} ',
+                text: ' ${TTexts.end} ',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               TextSpan(

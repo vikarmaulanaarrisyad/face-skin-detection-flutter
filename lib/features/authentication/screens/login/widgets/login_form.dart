@@ -1,3 +1,4 @@
+import 'package:face_skin_detection_flutter/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:face_skin_detection_flutter/features/authentication/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +49,7 @@ class TLoginForm extends StatelessWidget {
               ),
               // Forgot Password
               TextButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ForgotPasswordScreen()),
                 child: const Text(TTexts.forgotPassword),
               ),
             ],
