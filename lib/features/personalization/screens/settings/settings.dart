@@ -3,9 +3,11 @@ import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/contain
 import 'package:face_skin_detection_flutter/common/widgets/list_title/setting_menu_title.dart';
 import 'package:face_skin_detection_flutter/common/widgets/list_title/user_profile_title.dart';
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
+import 'package:face_skin_detection_flutter/features/personalization/screens/profile/profile.dart';
 import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -33,7 +35,9 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   // User Profil Card
-                  const TUserprofileText(),
+                  TUserprofileText(
+                    onPressed: () => Get.to(() => const ProfileScreen()),
+                  ),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
