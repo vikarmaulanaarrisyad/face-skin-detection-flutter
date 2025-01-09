@@ -31,4 +31,6 @@ class TImages {
 
   // Profil
   static const String user = 'assets/images/user/user.png';
+
+  static const String decorAnimation = 'assets/images/user/user.png';
 }

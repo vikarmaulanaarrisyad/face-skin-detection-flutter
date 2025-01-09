@@ -23,7 +23,7 @@ class TRoundedImage extends StatelessWidget {
   final bool applyImageRadius;
   final BoxBorder? border;
   final Color backgroundColor;
-  final BoxFit fit;
+  final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
   final bool isNetworkImage;
   final VoidCallback? onPress;
@@ -31,11 +31,6 @@ class TRoundedImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Pilih tipe gambar (NetworkImage atau AssetImage)
-    final imageProvider = isNetworkImage
-        ? NetworkImage(imageUrl) as ImageProvider
-        : AssetImage(imageUrl);
-
     return GestureDetector(
       onTap: onPress,
       child: Container(
@@ -52,8 +47,10 @@ class TRoundedImage extends StatelessWidget {
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
           child: Image(
-            image: imageProvider,
             fit: fit,
+            image: isNetworkImage
+                ? NetworkImage(imageUrl)
+                : AssetImage(imageUrl) as ImageProvider,
           ),
         ),
       ),

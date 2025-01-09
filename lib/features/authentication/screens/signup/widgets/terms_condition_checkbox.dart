@@ -1,24 +1,33 @@
+import 'package:face_skin_detection_flutter/features/authentication/controllers/signup/signup_controller.dart';
 import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 import 'package:face_skin_detection_flutter/utils/constants/text_strings.dart';
+import 'package:face_skin_detection_flutter/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TTermsConditionCheckbox extends StatelessWidget {
   const TTermsConditionCheckbox({
     super.key,
-    required this.dark,
   });
-
-  final bool dark;
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignupController.instance;
+    final dark = THelperFunctions.isDarkMode(context);
     return Row(
       children: [
         SizedBox(
-            width: 24,
-            height: 24,
-            child: Checkbox(value: true, onChanged: (value) {})),
+          width: 10,
+          height: 10,
+          child: Obx(
+            () => Checkbox(
+              value: controller.privacyPolice.value,
+              onChanged: (value) => controller.privacyPolice.value =
+                  !controller.privacyPolice.value,
+            ),
+          ),
+        ),
         const SizedBox(width: TSizes.spaceBtwItems),
         Text.rich(
           TextSpan(

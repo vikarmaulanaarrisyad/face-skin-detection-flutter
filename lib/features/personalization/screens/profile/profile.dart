@@ -56,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                 value: 'admin@gmail.com',
                 onPressed: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: TSizes.spaceBtwItems,
               ),
               // HEADING PERSONAL INFO
@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
               Center(
                 child: TextButton(
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       'Close Account',
                       style: TextStyle(color: Colors.red),
                     )),

@@ -1,4 +1,4 @@
-import 'package:face_skin_detection_flutter/features/authentication/controllers/onboarding_controller.dart';
+import 'package:face_skin_detection_flutter/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 import 'package:face_skin_detection_flutter/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';

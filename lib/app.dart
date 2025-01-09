@@ -1,4 +1,5 @@
-import 'package:face_skin_detection_flutter/features/authentication/screens/login/login.dart';
+import 'package:face_skin_detection_flutter/bindings/general_bindings.dart';
+import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,15 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      home: const LoginScreen(),
+      initialBinding: GeneralBindings(),
+      home: const Scaffold(
+        backgroundColor: TColors.primary,
+        body: Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }

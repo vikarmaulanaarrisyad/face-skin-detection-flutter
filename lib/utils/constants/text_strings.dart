@@ -1,59 +1,61 @@
 class TTexts {
-  // Teks Global
-  static const String submit = 'Kirim';
-  static const String appName = 'Perawatan Wajah';
-  static const String tContinue = 'Lanjutkan';
-  static const String versionApp = 'versi 1.0.0';
+  // Global Texts
+  static const String submit = 'Submit';
+  static const String appName = 'Skin Care Detection';
+  static const String tContinue = 'Continue';
+  static const String versionApp = 'version 1.0.0';
 
   // OnBoarding
-  static const String onBoardingTitle1 = "Pilih produk Anda";
-  static const String onBoardingTitle2 = "Pilih Metode Pembayaran";
-  static const String onBoardingTitle3 = "Antar ke depan pintu Anda";
+  static const String onBoardingTitle1 = "Choose your skin care product";
+  static const String onBoardingTitle2 = "Choose your skin diagnosis method";
+  static const String onBoardingTitle3 =
+      "Get personalized care recommendations";
 
-  static const String onBoardingSubTitle1 = "Selamat datang di Dunia 1";
-  static const String onBoardingSubTitle2 = "Selamat datang di Dunia 2";
-  static const String onBoardingSubTitle3 = "Selamat datang di Dunia 3";
+  static const String onBoardingSubTitle1 = "Welcome to Skin Care World";
+  static const String onBoardingSubTitle2 = "Tailored solutions just for you";
+  static const String onBoardingSubTitle3 = "Discover healthy skin habits";
 
-  // Beranda
-  static const String homeAppbarTitle = "Hari yang baik untuk berbelanja";
-  static const String homeAppbarSubTitle = "Hari yang baik untuk berbelanja";
+  // Home
+  static const String homeAppbarTitle = "A great day for skin care";
+  static const String homeAppbarSubTitle =
+      "Enhance your skin health with personalized care";
 
-  // Otentikasi: Teks Formulir
-  static const String firstName = 'Nama Depan';
-  static const String lastName = 'Nama Belakang';
+  // Authentication: Form Texts
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
   static const String email = 'Email';
-  static const String password = 'Kata Sandi';
-  static const String username = 'Nama Pengguna';
-  static const String phoneNo = 'Nomor Telepon';
-  static const String forgotPassword = 'Lupa Kata Sandi';
-  static const String signIn = 'Masuk';
-  static const String createAccount = 'Buat Akun';
-  static const String orSignInWith = 'atau masuk dengan';
-  static const String orSignUpWith = 'atau daftar dengan';
-  static const String iAgreeTo = 'Saya setuju dengan';
-  static const String end = 'dan';
-  static const String rememberMe = 'Ingat Saya';
-  static const String privaryPolice = 'Kebijakan Privasi';
-  static const String termsOfUse = 'Syarat Penggunaan';
-  static const String verificationCode = 'Kode Verifikasi';
-  static const String resendEmail = 'Kirim Ulang Email';
-  static const String resendEmailIn = 'Kirim Ulang Email Dalam';
-  static const String confirmEmail = 'Verifikasi alamat email Anda';
-  static const String yourAccountCreatedTitle = 'Verifikasi alamat email Anda';
-  static const String yourAccountCreatedSubTitle =
-      'Verifikasi alamat email Anda';
-  static const String changeYourPasswordTitle = 'Verifikasi alamat email Anda';
-  static const String changeYourPasswordSubTitle =
-      'Verifikasi alamat email Anda';
+  static const String password = 'Password';
+  static const String username = 'Username';
+  static const String phoneNo = 'Phone Number';
+  static const String forgotPassword = 'Forgot Password';
+  static const String signIn = 'Sign In';
+  static const String createAccount = 'Create Account';
+  static const String orSignInWith = 'or sign in with';
+  static const String orSignUpWith = 'or sign up with';
+  static const String iAgreeTo = 'I agree to';
+  static const String end = 'and';
+  static const String rememberMe = 'Remember Me';
+  static const String privaryPolice = 'Privacy Policy';
+  static const String termsOfUse = 'Terms of Use';
+  static const String verificationCode = 'Verification Code';
+  static const String resendEmail = 'Resend Email';
+  static const String resendEmailIn = 'Resend Email In';
+  static const String confirmEmail = 'Verify your email address';
+  static const String yourAccountCreatedTitle = 'Verify your email address';
+  static const String yourAccountCreatedSubTitle = 'Verify your email address';
+  static const String changeYourPasswordTitle = 'Verify your email address';
+  static const String changeYourPasswordSubTitle = 'Verify your email address';
   static const String confirmEmailSubTitle =
-      'Selamat! Akun Anda menunggu: Kami telah mengirimkan email aman kepada Anda';
+      'Congratulations! Your account is pending: We have sent you a secure email';
 
   // Login
-  static const String loginTitle = "Selamat datang kembali";
-  static const String loginSubTitle = "Temukan Pilihan Tak Terbatas dan";
-  static const String signupTitle = 'Mari buat akun Anda';
-  static const String forgetPasswordTitle = 'Lupa Kata Sandi';
-  static const String done = 'Selesai';
+  static const String loginTitle = "Welcome back";
+  static const String loginSubTitle =
+      "Discover personalized skin care solutions";
+
+  static const String signupTitle = 'Let’s create your account';
+  static const String forgetPasswordTitle = 'Forgot Password';
+  static const String done = 'Done';
   static const String forgetPasswordSubTitle =
-      'Jangan khawatir, terkadang orang bisa lupa juga';
+      'Don’t worry, people forget sometimes';
 }
