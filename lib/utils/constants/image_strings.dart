@@ -28,4 +28,7 @@ class TImages {
   static const String productBanner3 = 'assets/images/banners/gambar_3.png';
   static const String productBanner4 = 'assets/images/banners/gambar_4.png';
   static const String productBanner5 = 'assets/images/banners/gambar_5.png';
+
+  // Profil
+  static const String user = 'assets/images/user/user.png';
 }

@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
                   TSearchContainer(text: 'Search...'),
                   SizedBox(height: TSizes.spaceBtwSections),
+
                   // Category Warna Kulit
                   Padding(
                     padding: EdgeInsets.only(left: TSizes.defaultSpace),
@@ -42,6 +43,10 @@ class HomeScreen extends StatelessWidget {
                         THomeCategories(),
                       ],
                     ),
+                  ),
+
+                  SizedBox(
+                    height: TSizes.spaceBtwSections,
                   ),
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:face_skin_detection_flutter/features/home/screens/home.dart';
+import 'package:face_skin_detection_flutter/features/personalization/screens/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,11 +20,6 @@ class NavigationController extends GetxController {
           child: Text('Deteksi',
               style: TextStyle(fontSize: 24, color: Colors.white))),
     ),
-    Container(
-      color: Colors.blue,
-      child: const Center(
-          child: Text('Profile',
-              style: TextStyle(fontSize: 24, color: Colors.white))),
-    ),
+    const SettingsScreen()
   ];
 }
