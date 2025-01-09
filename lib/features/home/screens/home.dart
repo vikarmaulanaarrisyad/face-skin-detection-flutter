@@ -1,5 +1,7 @@
 import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:face_skin_detection_flutter/common/widgets/layouts/grid_layout.dart';
+import 'package:face_skin_detection_flutter/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_appbar.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/widgets/home_categories.dart';
@@ -14,11 +16,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   THomeAppBar(),
@@ -46,7 +48,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // Body
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(TSizes.defaultSpace),
               child: TProductSlider(
                 banners: [
@@ -58,6 +60,13 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: TSizes.spaceBtwItems),
+
+            TGridLayout(
+              itemCount: 4,
+              itemBuilder: (_, index) => const TProductCardVertical(),
+            ),
+            const TProductCardVertical(),
           ],
         ),
       ),
