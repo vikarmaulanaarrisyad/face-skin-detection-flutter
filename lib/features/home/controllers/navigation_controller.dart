@@ -1,3 +1,4 @@
+import 'package:face_skin_detection_flutter/features/camera/camera.dart';
 import 'package:face_skin_detection_flutter/features/home/screens/home.dart';
 import 'package:face_skin_detection_flutter/features/personalization/screens/settings/settings.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +15,7 @@ class NavigationController extends GetxController {
           child: Text('Artikel',
               style: TextStyle(fontSize: 24, color: Colors.white))),
     ),
-    Container(
-      color: Colors.red,
-      child: const Center(
-          child: Text('Deteksi',
-              style: TextStyle(fontSize: 24, color: Colors.white))),
-    ),
+    const CameraScreen(),
     const SettingsScreen()
   ];
 }
