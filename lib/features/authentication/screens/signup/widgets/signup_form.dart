@@ -22,46 +22,14 @@ class TSignUpForm extends StatelessWidget {
       key: controller.signupFormKey,
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: TextFormField(
-                  controller: controller.firstName,
-                  validator: (value) =>
-                      TValidator.validateEmptyText('First name', value),
-                  expands: false,
-                  decoration: const InputDecoration(
-                    labelText: TTexts.firstName,
-                    prefixIcon: Icon(Iconsax.user),
-                  ),
-                ),
-              ),
-              const SizedBox(width: TSizes.spaceBtwInputFileds),
-              // LastName Field
-              Expanded(
-                child: TextFormField(
-                  validator: (value) =>
-                      TValidator.validateEmptyText('Last name', value),
-                  controller: controller.lastName,
-                  expands: false,
-                  decoration: const InputDecoration(
-                    labelText: TTexts.lastName,
-                    prefixIcon: Icon(Iconsax.user),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: TSizes.spaceBtwInputFileds),
-
           // Username Field
           TextFormField(
-            controller: controller.username,
+            controller: controller.name,
             validator: (value) =>
-                TValidator.validateEmptyText('Username', value),
+                TValidator.validateEmptyText('Nama Lengkap', value),
             expands: false,
             decoration: const InputDecoration(
-              labelText: TTexts.username,
+              labelText: TTexts.name,
               prefixIcon: Icon(Iconsax.user_edit),
             ),
           ),
@@ -74,17 +42,6 @@ class TSignUpForm extends StatelessWidget {
             decoration: const InputDecoration(
               labelText: TTexts.email,
               prefixIcon: Icon(Iconsax.direct),
-            ),
-          ),
-
-          // Phone Number Field
-          const SizedBox(height: TSizes.spaceBtwInputFileds),
-          TextFormField(
-            validator: (value) => TValidator.validatePhoneNumber(value),
-            controller: controller.phoneNumber,
-            decoration: const InputDecoration(
-              labelText: TTexts.phoneNo,
-              prefixIcon: Icon(Iconsax.call),
             ),
           ),
 

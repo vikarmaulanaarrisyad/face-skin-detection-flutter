@@ -11,48 +11,38 @@ class SignupController extends GetxController {
   // variable
   final hidePassword = true.obs;
   final privacyPolice = false.obs;
+  final name = TextEditingController();
   final email = TextEditingController();
-  final lastName = TextEditingController();
-  final username = TextEditingController();
   final password = TextEditingController();
-  final firstName = TextEditingController();
-  final phoneNumber = TextEditingController();
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   // SignUp
   Future<void> signup() async {
     try {
-      // Start Loding
+      // Start Loading
       TFullScreenLoader.openLoadingDialog(
           'We are processing your information...', TImages.decorAnimation);
-      // check internet
+
+      // Check internet connection
       final isConnected = await NetworkManager.instance.isConnected();
       if (!isConnected) return;
 
       // Form Validation
       if (signupFormKey.currentState!.validate()) return;
 
-      // Check Privacy Police
+      // Check Privacy Policy
       if (!privacyPolice.value) {
         TLoaders.warningSnackBar(
             title: 'Accept Privacy Policy',
             message:
-                'In continue to create account, yout must have to read and accept the Privacy Policy & Terms of use');
+                'To continue creating an account, you must read and accept the Privacy Policy & Terms of Use');
         return;
       }
-
-      // Register user in the database
-
-      // save userdata
-
-      // show success
-
-      // move to very email
     } catch (e) {
-      // show some generic
-      TLoaders.errorSnackBar(title: 'Erorr!', message: e.toString());
+      // Handle any generic errors
+      TLoaders.errorSnackBar(title: 'Error!', message: e.toString());
     } finally {
-      // remove loader
+      // Remove loader
       TFullScreenLoader.stopLoading();
     }
   }
