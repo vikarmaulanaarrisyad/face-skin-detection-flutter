@@ -21,7 +21,7 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   // Base URL for Flask API
-  final String _baseUrl = 'https://ec8c-160-22-222-29.ngrok-free.app/api';
+  final String _baseUrl = 'https://2a06-160-22-222-29.ngrok-free.app/api';
 
   // Login Method
   Future<void> doLogin() async {
@@ -58,9 +58,12 @@ class LoginController extends GetxController {
         'email': email.text.trim(),
         'password': password.text.trim(),
       }),
+      // encode : merubah objek to json
+      // decode : merbuah json to objek
     );
 
     if (response.statusCode == 200) {
+      // jika login berhasil
       final data = jsonDecode(response.body);
       final accessToken = data['data']['access_token']; // Get the access_token
       final name = data['data']['user']['name']; // Get the access_token
@@ -71,15 +74,16 @@ class LoginController extends GetxController {
       localStorage.write('NAME', name);
       localStorage.write('EMAIL', email);
 
-      // Success feedback
+      // Success feedback : ketika data betul di flutter dan database
       TLoaders.successSnackBar(title: 'Berhasil', message: message);
 
       // Stop loading
       TFullScreenLoader.stopLoading();
 
-      // Redirect to NavigationMenu
+      // Redirect to NavigationMenu : Beranda setelah login berhasil
       AuthenticationRepository.instance.screenRedirect();
     } else {
+      // Jika login gagal
       final error = jsonDecode(response.body);
       final message = error['message'];
       TLoaders.errorSnackBar(title: 'Gagal', message: message);

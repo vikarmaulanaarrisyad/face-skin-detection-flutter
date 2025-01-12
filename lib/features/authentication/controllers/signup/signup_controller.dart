@@ -23,7 +23,7 @@ class SignupController extends GetxController {
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   // Base URL for Flask API
-  final String _baseUrl = 'https://ec8c-160-22-222-29.ngrok-free.app/api';
+  final String _baseUrl = 'https://2a06-160-22-222-29.ngrok-free.app/api';
 
   Future<void> doRegister() async {
     // Start Loading
