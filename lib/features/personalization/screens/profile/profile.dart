@@ -1,10 +1,12 @@
 import 'package:face_skin_detection_flutter/common/widgets/appbar/appbar.dart';
 import 'package:face_skin_detection_flutter/common/widgets/images/t_circular_image.dart';
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
+import 'package:face_skin_detection_flutter/features/personalization/controllers/profile_controller.dart';
 import 'package:face_skin_detection_flutter/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:face_skin_detection_flutter/utils/constants/image_strings.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +14,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileController());
     return Scaffold(
       appBar: const TAppBar(showBackArrow: true, title: Text('Profile')),
       body: SingleChildScrollView(
@@ -98,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => controller.doLogout(),
                     child: const Text(
                       'Close Account',
                       style: TextStyle(color: Colors.red),

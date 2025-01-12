@@ -3,6 +3,7 @@ import 'package:face_skin_detection_flutter/common/widgets/custom_shapes/contain
 import 'package:face_skin_detection_flutter/common/widgets/list_title/setting_menu_title.dart';
 import 'package:face_skin_detection_flutter/common/widgets/list_title/user_profile_title.dart';
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
+import 'package:face_skin_detection_flutter/features/personalization/controllers/profile_controller.dart';
 import 'package:face_skin_detection_flutter/features/personalization/screens/profile/profile.dart';
 import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
@@ -15,6 +16,7 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProfileController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -101,7 +103,7 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () => controller.doLogout(),
                       child: const Text('Logout'),
                     ),
                   ),
