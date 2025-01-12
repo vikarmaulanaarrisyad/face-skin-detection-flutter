@@ -45,7 +45,6 @@ class _CameraScreenState extends State<CameraScreen> {
     if (response.statusCode == 200) {
       final responseData = await response.stream.bytesToString();
       final result = jsonDecode(responseData);
-      print(result);
       setState(() {
         _result = 'Prediksi: ${result['predicted_class']} ';
         _showOutfitButton =
