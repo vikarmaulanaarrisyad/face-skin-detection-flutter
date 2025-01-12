@@ -49,11 +49,11 @@ class TSignUpForm extends StatelessWidget {
           const SizedBox(height: TSizes.spaceBtwInputFileds),
           Obx(
             () => TextFormField(
-              validator: (value) => TValidator.validatePassoword(value),
-              controller: controller.password,
               obscureText: controller.hidePassword.value,
+              // validator: (value) => TValidator.validatePassoword(value),
+              controller: controller.password,
               decoration: InputDecoration(
-                labelText: TTexts.password,
+                prefixIcon: const Icon(Iconsax.password_check),
                 suffixIcon: IconButton(
                   onPressed: () => controller.hidePassword.value =
                       !controller.hidePassword.value,
@@ -61,7 +61,7 @@ class TSignUpForm extends StatelessWidget {
                       ? Iconsax.eye_slash
                       : Iconsax.eye),
                 ),
-                prefixIcon: const Icon(Iconsax.password_check),
+                labelText: TTexts.password,
               ),
             ),
           ),
@@ -75,7 +75,8 @@ class TSignUpForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () => controller.doRegister(), // Call the signup logic),
+                onPressed: () =>
+                    controller.doRegister(), // Call the signup logic),
                 child: const Text(TTexts.createAccount)),
           ),
         ],

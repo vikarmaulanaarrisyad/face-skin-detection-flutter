@@ -16,10 +16,10 @@ class SignupController extends GetxController {
   // variable
   final localStorage = GetStorage();
   final hidePassword = true.obs;
-  final privacyPolice = false.obs;
   final name = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
+  final privacyPolice = false.obs;
   GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
 
   // Base URL for Flask API
@@ -35,7 +35,13 @@ class SignupController extends GetxController {
     if (!isConnected) return;
 
     // Form Validation
-    if (signupFormKey.currentState!.validate()) return;
+    if (!signupFormKey.currentState!.validate()) {
+      TLoaders.errorSnackBar(
+          title: 'Invalid Form', message: 'Please fill all fields correctly.');
+      // Stop loading
+      TFullScreenLoader.stopLoading();
+      return;
+    }
 
     // Check Privacy Policy
     if (!privacyPolice.value) {
@@ -43,6 +49,8 @@ class SignupController extends GetxController {
           title: 'Accept Privacy Policy',
           message:
               'To continue creating an account, you must read and accept the Privacy Policy & Terms of Use');
+      // Stop loading
+      TFullScreenLoader.stopLoading();
       return;
     }
 

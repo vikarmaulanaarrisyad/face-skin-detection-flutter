@@ -41,6 +41,8 @@ class LoginController extends GetxController {
     if (!loginFormKey.currentState!.validate()) {
       TLoaders.errorSnackBar(
           title: 'Invalid Form', message: 'Please fill all fields correctly.');
+      // Stop loading
+      TFullScreenLoader.stopLoading();
       return;
     }
 
@@ -61,9 +63,13 @@ class LoginController extends GetxController {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final accessToken = data['data']['access_token']; // Get the access_token
+      final name = data['data']['user']['name']; // Get the access_token
+      final email = data['data']['user']['email']; // Get the access_token
       final message = data['message'];
       // Save the access token to local storage
       localStorage.write('ACCESS_TOKEN', accessToken);
+      localStorage.write('NAME', name);
+      localStorage.write('EMAIL', email);
 
       // Success feedback
       TLoaders.successSnackBar(title: 'Berhasil', message: message);

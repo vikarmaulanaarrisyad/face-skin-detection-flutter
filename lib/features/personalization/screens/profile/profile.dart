@@ -7,7 +7,7 @@ import 'package:face_skin_detection_flutter/utils/constants/image_strings.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -15,6 +15,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
+    // Accessing GetStorage to get the name and email
+    final box = GetStorage();
+    final String name = box.read('NAME');
+    final String email = box.read('EMAIL');
     return Scaffold(
       appBar: const TAppBar(showBackArrow: true, title: Text('Profile')),
       body: SingleChildScrollView(
@@ -51,51 +55,51 @@ class ProfileScreen extends StatelessWidget {
 
               TProfileMenu(
                 title: 'Name',
-                value: 'Admin',
+                value: name,
                 onPressed: () {},
               ),
               TProfileMenu(
                 title: 'Username',
-                value: 'admin@gmail.com',
+                value: email,
                 onPressed: () {},
               ),
               const SizedBox(
                 height: TSizes.spaceBtwItems,
               ),
-              // HEADING PERSONAL INFO
-              const TSectionHeading(
-                title: 'Personal Information',
-                showActionButton: false,
-              ),
-              const SizedBox(
-                height: TSizes.spaceBtwItems,
-              ),
-              TProfileMenu(
-                title: 'User ID',
-                value: '123',
-                icon: Iconsax.copy,
-                onPressed: () {},
-              ),
-              TProfileMenu(
-                title: 'E-mail',
-                value: 'email',
-                onPressed: () {},
-              ),
-              TProfileMenu(
-                title: 'Phone Number',
-                value: '0878',
-                onPressed: () {},
-              ),
-              TProfileMenu(
-                title: 'Gender',
-                value: 'Laki-laki',
-                onPressed: () {},
-              ),
-              TProfileMenu(
-                title: 'Date Of Birth',
-                value: '15 Juli 2001',
-                onPressed: () {},
-              ),
+              // // HEADING PERSONAL INFO
+              // const TSectionHeading(
+              //   title: 'Personal Information',
+              //   showActionButton: false,
+              // ),
+              // const SizedBox(
+              //   height: TSizes.spaceBtwItems,
+              // ),
+              // TProfileMenu(
+              //   title: 'User ID',
+              //   value: '123',
+              //   icon: Iconsax.copy,
+              //   onPressed: () {},
+              // ),
+              // TProfileMenu(
+              //   title: 'E-mail',
+              //   value: 'email',
+              //   onPressed: () {},
+              // ),
+              // TProfileMenu(
+              //   title: 'Phone Number',
+              //   value: '0878',
+              //   onPressed: () {},
+              // ),
+              // TProfileMenu(
+              //   title: 'Gender',
+              //   value: 'Laki-laki',
+              //   onPressed: () {},
+              // ),
+              // TProfileMenu(
+              //   title: 'Date Of Birth',
+              //   value: '15 Juli 2001',
+              //   onPressed: () {},
+              // ),
 
               const Divider(),
 

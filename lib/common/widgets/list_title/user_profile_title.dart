@@ -7,10 +7,12 @@ import 'package:iconsax/iconsax.dart';
 class TUserprofileText extends StatelessWidget {
   const TUserprofileText({
     super.key,
-    this.onPressed,
+    this.onPressed, required this.title, required this.subTitle,
   });
 
   final Function()? onPressed;
+  final String title;
+  final String subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +20,14 @@ class TUserprofileText extends StatelessWidget {
       leading: const TCircularImage(
           image: TImages.user, width: 50, height: 50, padding: 0),
       title: Text(
-        'Coding with T',
+        title,
         style: Theme.of(context)
             .textTheme
             .headlineSmall!
             .apply(color: TColors.white),
       ),
       subtitle: Text(
-        'admin@gmail.com',
+        subTitle,
         style:
             Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
       ),

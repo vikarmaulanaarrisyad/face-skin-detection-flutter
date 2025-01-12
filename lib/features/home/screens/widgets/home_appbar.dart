@@ -1,5 +1,4 @@
 import 'package:face_skin_detection_flutter/common/widgets/appbar/appbar.dart';
-import 'package:face_skin_detection_flutter/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:face_skin_detection_flutter/utils/constants/colors.dart';
 import 'package:face_skin_detection_flutter/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +30,6 @@ class THomeAppBar extends StatelessWidget {
           ),
         ],
       ),
-      actions: [
-        TCartCounterIcon(
-          onPressed: () {},
-          iconColor: TColors.white,
-        )
-      ],
     );
   }
 }
