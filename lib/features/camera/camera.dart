@@ -1,5 +1,7 @@
 import 'package:face_skin_detection_flutter/common/widgets/appbar/appbar.dart';
+import 'package:face_skin_detection_flutter/features/outfit/screens/outfit_screens.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -15,9 +17,8 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   File? _image;
   String _result = "Prediksi akan ditampilkan di sini";
-  bool _showOutfitButton = false; // Flag to control visibility of the button
+  bool _showOutfitButton = false;
 
-  // Fungsi untuk memilih gambar dari galeri
   Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? pickedFile =
@@ -25,19 +26,29 @@ class _CameraScreenState extends State<CameraScreen> {
 
     if (pickedFile != null) {
       setState(() {
-        _image = File(pickedFile.path); // Menyimpan gambar yang dipilih
+        _image = File(pickedFile.path);
       });
     }
   }
 
-  // Fungsi untuk mengirim gambar ke API dan mendapatkan hasil prediksi
+  Future<void> _captureImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? capturedFile =
+        await picker.pickImage(source: ImageSource.camera);
+
+    if (capturedFile != null) {
+      setState(() {
+        _image = File(capturedFile.path);
+      });
+    }
+  }
+
   Future<void> _predict() async {
     if (_image == null) return;
 
-    final uri = Uri.parse(
-        'https://trusting-content-duck.ngrok-free.app/deteksi'); // Ganti dengan URL API Anda
+    final uri =
+        Uri.parse('https://trusting-content-duck.ngrok-free.app/deteksi');
 
-    // Mengirim gambar ke API
     var request = http.MultipartRequest('POST', uri);
     request.files.add(await http.MultipartFile.fromPath('file', _image!.path));
 
@@ -46,33 +57,32 @@ class _CameraScreenState extends State<CameraScreen> {
       final responseData = await response.stream.bytesToString();
       final result = jsonDecode(responseData);
       setState(() {
-        _result = 'Prediksi: ${result['predicted_class']} ';
-        _showOutfitButton =
-            true; // Show the outfit recommendation button after prediction
+        _result = 'Prediksi: ${result['predicted_class']}';
+        _showOutfitButton = true;
       });
     } else {
       setState(() {
         _result = "Gagal mendapatkan prediksi";
-        _showOutfitButton = false; // Hide the button if prediction fails
+        _showOutfitButton = false;
       });
     }
   }
 
-  // Fungsi untuk menampilkan rekomendasi outfit
   void _showOutfitRecommendation() {
-    // Logic for outfit recommendation based on predicted class
-    // For example, you can show different outfits for different classes
-    String recommendation = "Rekomendasi outfit: ";
+    String recommendation;
 
     switch (_result) {
-      case "Prediksi: 1":
-        recommendation = "Rekomendasi outfit: Casual wear";
+      case "Prediksi: light":
+        recommendation = "Rekomendasi outfit: Warna pastel atau warna cerah.";
         break;
-      case "Prediksi: 2":
-        recommendation = "Rekomendasi outfit: Formal wear";
+      case "Prediksi: medium":
+        recommendation = "Rekomendasi outfit: Warna bumi atau warna gelap.";
+        break;
+      case "Prediksi: dark":
+        recommendation = "Rekomendasi outfit: Warna terang atau warna neon.";
         break;
       default:
-        recommendation = "Rekomendasi outfit: Default outfit";
+        recommendation = "Rekomendasi outfit: Pilih warna netral.";
     }
 
     showDialog(
@@ -101,126 +111,113 @@ class _CameraScreenState extends State<CameraScreen> {
         showBackArrow: true,
         title: Text('Deteksi'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // Card untuk menampilkan gambar atau placeholder
-              _image == null
-                  ? Card(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(32.0),
+              Container(
+                height: 250,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey[300]!),
+                ),
+                child: _image == null
+                    ? Center(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.photo,
-                              size: 100,
+                              Icons.image_outlined,
+                              size: 80,
                               color: Colors.grey[400],
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Pilih gambar dari galeri',
+                              'Pilih atau Ambil Gambar',
                               style: TextStyle(
                                 color: Colors.grey[600],
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    )
-                  : ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                        height: 300,
-                        width: 300,
-                        decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.black38,
-                              blurRadius: 10,
-                              offset: Offset(0, 10),
-                            ),
-                          ],
-                          image: DecorationImage(
-                            image: FileImage(_image!),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.circular(12),
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Image.file(
+                          _image!,
+                          fit: BoxFit.cover,
                         ),
                       ),
+              ),
+              const SizedBox(height: 30),
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                alignment: WrapAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: _pickImage,
+                    icon: const Icon(Icons.photo_library),
+                    label: const Text('Pilih dari Galeri'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
                     ),
-              const SizedBox(height: 20),
-
-              // Tombol pilih gambar dengan styling
-              ElevatedButton(
-                onPressed: _pickImage,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.deepPurple,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
                   ),
-                  elevation: 5,
-                ),
-                child: const Text('Pilih Foto dari Galeri'),
-              ),
-
-              const SizedBox(height: 20),
-
-              // Tombol prediksi dengan styling
-              ElevatedButton(
-                onPressed: _image == null ? null : _predict,
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: _image == null ? Colors.grey : Colors.green,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  ElevatedButton.icon(
+                    onPressed: _captureImage,
+                    icon: const Icon(Icons.camera_alt),
+                    label: const Text('Ambil dari Kamera'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                    ),
                   ),
-                  elevation: 5,
-                ),
-                child: const Text('Prediksi'),
+                  ElevatedButton.icon(
+                    onPressed: _image == null ? null : _predict,
+                    icon: const Icon(Icons.check),
+                    label: const Text('Prediksi'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          _image == null ? Colors.grey : Colors.green,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-
               const SizedBox(height: 20),
-
-              // Menampilkan hasil prediksi
               Text(
                 _result,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
                 ),
+                textAlign: TextAlign.center,
               ),
-
-              // Button untuk rekomendasi outfit jika prediksi berhasil
+              const SizedBox(height: 20),
               Visibility(
                 visible: _showOutfitButton,
                 child: ElevatedButton(
                   onPressed: _showOutfitRecommendation,
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
                     backgroundColor: Colors.purple,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
+                        horizontal: 20, vertical: 12),
                   ),
                   child: const Text('Lihat Rekomendasi Outfit'),
                 ),
