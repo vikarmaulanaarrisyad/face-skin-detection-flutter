@@ -6,10 +6,10 @@ class ChatbotScreen extends StatefulWidget {
   const ChatbotScreen({super.key});
 
   @override
-  _ChatbotScreenState createState() => _ChatbotScreenState();
+  ChatbotScreenState createState() => ChatbotScreenState();
 }
 
-class _ChatbotScreenState extends State<ChatbotScreen> {
+class ChatbotScreenState extends State<ChatbotScreen> {
   final TextEditingController _messageController = TextEditingController();
   final List<Map<String, dynamic>> _messages = [];
 
@@ -51,8 +51,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         title: const Row(
           children: [
             CircleAvatar(
-              backgroundImage:
-                  const AssetImage('assets/images/user/Avatar-01.jpeg'),
+              backgroundImage: AssetImage('assets/images/user/Avatar-01.jpeg'),
             ),
             SizedBox(width: 10),
             Text('SmartBot', style: TextStyle(fontWeight: FontWeight.bold)),
@@ -155,8 +154,8 @@ class ChatBubble extends StatelessWidget {
             decoration: BoxDecoration(
               color: isUser ? Colors.teal.shade100 : Colors.grey.shade300,
               borderRadius: BorderRadius.circular(18.0),
-              boxShadow: [
-                const BoxShadow(
+              boxShadow: const [
+                BoxShadow(
                   color: Colors.black12,
                   blurRadius: 6,
                   offset: Offset(2, 4),

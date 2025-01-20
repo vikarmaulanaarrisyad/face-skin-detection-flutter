@@ -1,7 +1,5 @@
 import 'package:face_skin_detection_flutter/common/widgets/appbar/appbar.dart';
-import 'package:face_skin_detection_flutter/features/outfit/screens/outfit_screens.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io';
@@ -11,10 +9,10 @@ class CameraScreen extends StatefulWidget {
   const CameraScreen({super.key});
 
   @override
-  _CameraScreenState createState() => _CameraScreenState();
+  CameraScreenState createState() => CameraScreenState();
 }
 
-class _CameraScreenState extends State<CameraScreen> {
+class CameraScreenState extends State<CameraScreen> {
   File? _image;
   String _result = "Prediksi akan ditampilkan di sini";
   bool _showOutfitButton = false;

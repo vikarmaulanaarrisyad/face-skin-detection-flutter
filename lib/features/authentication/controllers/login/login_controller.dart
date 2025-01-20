@@ -21,7 +21,7 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
   // Base URL for Flask API
-  final String _baseUrl = 'https://2a06-160-22-222-29.ngrok-free.app/api';
+  final String _baseUrl = 'https://25ae-103-47-133-85.ngrok-free.app/api';
 
   // Login Method
   Future<void> doLogin() async {
@@ -66,11 +66,13 @@ class LoginController extends GetxController {
       // jika login berhasil
       final data = jsonDecode(response.body);
       final accessToken = data['data']['access_token']; // Get the access_token
+      final id = data['data']['user']['id']; // Get the access_token
       final name = data['data']['user']['name']; // Get the access_token
       final email = data['data']['user']['email']; // Get the access_token
       final message = data['message'];
       // Save the access token to local storage
       localStorage.write('ACCESS_TOKEN', accessToken);
+      localStorage.write('ID', id);
       localStorage.write('NAME', name);
       localStorage.write('EMAIL', email);
 

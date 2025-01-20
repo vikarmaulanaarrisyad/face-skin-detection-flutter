@@ -2,6 +2,7 @@ import 'package:face_skin_detection_flutter/common/widgets/appbar/appbar.dart';
 import 'package:face_skin_detection_flutter/common/widgets/images/t_circular_image.dart';
 import 'package:face_skin_detection_flutter/common/widgets/text/section_heading.dart';
 import 'package:face_skin_detection_flutter/features/personalization/controllers/profile_controller.dart';
+import 'package:face_skin_detection_flutter/features/personalization/screens/profile/profile_change.dart';
 import 'package:face_skin_detection_flutter/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:face_skin_detection_flutter/utils/constants/image_strings.dart';
 import 'package:face_skin_detection_flutter/utils/constants/sizes.dart';
@@ -54,52 +55,20 @@ class ProfileScreen extends StatelessWidget {
               ),
 
               TProfileMenu(
-                title: 'Name',
+                title: 'Nama Lengkap',
                 value: name,
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ProfileChangeScreen()),
               ),
+
               TProfileMenu(
-                title: 'Username',
+                title: 'Email',
                 value: email,
-                onPressed: () {},
+                onPressed: () => Get.to(() => const ProfileChangeScreen()),
               ),
+
               const SizedBox(
                 height: TSizes.spaceBtwItems,
               ),
-              // // HEADING PERSONAL INFO
-              // const TSectionHeading(
-              //   title: 'Personal Information',
-              //   showActionButton: false,
-              // ),
-              // const SizedBox(
-              //   height: TSizes.spaceBtwItems,
-              // ),
-              // TProfileMenu(
-              //   title: 'User ID',
-              //   value: '123',
-              //   icon: Iconsax.copy,
-              //   onPressed: () {},
-              // ),
-              // TProfileMenu(
-              //   title: 'E-mail',
-              //   value: 'email',
-              //   onPressed: () {},
-              // ),
-              // TProfileMenu(
-              //   title: 'Phone Number',
-              //   value: '0878',
-              //   onPressed: () {},
-              // ),
-              // TProfileMenu(
-              //   title: 'Gender',
-              //   value: 'Laki-laki',
-              //   onPressed: () {},
-              // ),
-              // TProfileMenu(
-              //   title: 'Date Of Birth',
-              //   value: '15 Juli 2001',
-              //   onPressed: () {},
-              // ),
 
               const Divider(),
 
